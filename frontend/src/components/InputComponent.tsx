@@ -4,21 +4,11 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
 const InputComponent = () => {
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	let windowWidth = 0;
+	if (window !== undefined) {
+		windowWidth = window.innerWidth;
+	}
 	const [inputText, setInputText] = useState('');
-
-	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-		};
-
-		// Add event listener for window resize
-		window.addEventListener('resize', handleResize);
-		// Clean up the event listener on component unmount
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
 
 	const handleSend = () => {
 		console.log('clicked on send');

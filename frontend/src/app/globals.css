@@ -4,9 +4,12 @@
 
 .heightScroll {
 	height: 90vh;
-	overflow-y: hidden;
 }
 
 .heightInput {
 	height: 10vh;
+}
+
+.constitutionText {
+	font-family: 'Architects Daughter', cursive;
 }
