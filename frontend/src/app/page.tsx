@@ -1,3 +1,5 @@
+'use client';
+
 import InputComponent from '@/components/InputComponent';
 import React from 'react';
 

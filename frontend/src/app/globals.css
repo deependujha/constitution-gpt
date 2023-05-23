@@ -2,14 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .heightScroll {
-  height: 90vh;
-  overflow-y: hidden;
+	height: 90vh;
+	overflow-y: hidden;
 }
 
 .heightInput {
-  height: 10vh;
-  background-color: yellow;
+	height: 10vh;
 }
