@@ -4,7 +4,7 @@ import { Roboto } from 'next/font/google';
 const inter = Roboto({ subsets: ['latin'], weight: '400' });
 
 export const metadata = {
-	title: 'Constituion  GPT',
+	title: 'Constitution  GPT',
 	description: 'A GPT-3.5 powered chatbot for the Indian Constitution',
 };
 
