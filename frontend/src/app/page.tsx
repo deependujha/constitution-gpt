@@ -5,6 +5,7 @@ import ChatBoxComponent from '@/components/ChatBoxComponent';
 import ChatMessages from '@/components/ChatMessages';
 import InputComponent from '@/components/InputComponent';
 import MainLandingComponent from '@/components/MainLandingComponent';
+import MakeAPIRequest from '@/utils/MakeAPIRequest';
 
 type MsgType = {
 	message: string;
@@ -12,25 +13,25 @@ type MsgType = {
 };
 
 const Page = () => {
+	const [loading, setLoading] = useState(false);
 	const [messages, setMessages] = useState([] as MsgType[]);
 	const myRef = useRef<HTMLDivElement>(null);
 
-	const addNewMsg = (msg: string, sender: 'user' | 'bot') => {
+	const addNewMsg = async (msg: string, sender: 'user' | 'bot') => {
 		if (msg.trim() === '') return;
 		setMessages((prev) => [...prev, { message: msg, sender: sender }]);
 		setTimeout(() => {
-			setMessages((prev) => [
-				...prev,
-				{ message: 'Jai siya Ram! 🛕', sender: 'bot' },
-			]);
 			if (myRef.current !== null) {
 				myRef.current.scrollIntoView({ behavior: 'smooth' });
 			}
-		}, 500);
-
-		if (myRef.current !== null) {
-			myRef.current.scrollIntoView({ behavior: 'smooth' });
-		}
+		}, 300);
+		setLoading(true);
+		MakeAPIRequest(msg).then((aiResponse: any) => {
+			// console.log('aiResponse', aiResponse);
+			if (aiResponse === 'An error occurred while making API request') return;
+			setMessages((prev) => [...prev, { message: aiResponse, sender: 'bot' }]);
+			setLoading(false);
+		});
 	};
 
 	return (
@@ -42,7 +43,7 @@ const Page = () => {
 					</div>
 				) : (
 					<div>
-						<ChatMessages messages={messages} myRef={myRef} />
+						<ChatMessages messages={messages} myRef={myRef} loading={loading} />
 					</div>
 				)}
 			</div>

@@ -3,6 +3,7 @@ import random
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import time
 
 load_dotenv()
 PORT = os.getenv('PORT')
@@ -40,6 +41,7 @@ def home():
     idx = random.randint(0, 9)
     response = jsonify({'response': messages[idx], 'success': True})
     response.status_code = 200
+    time.sleep(3)
     return response
 
 

@@ -16,9 +16,10 @@ type MsgType = {
 type Props = {
 	messages: MsgType[];
 	myRef: React.RefObject<HTMLDivElement>;
+	loading: boolean;
 };
 
-const ChatMessages = ({ messages, myRef }: Props) => {
+const ChatMessages = ({ messages, myRef, loading }: Props) => {
 	return (
 		<div className="" style={{ maxHeight: '90vh', overflowY: 'scroll' }}>
 			<div
@@ -39,8 +40,15 @@ const ChatMessages = ({ messages, myRef }: Props) => {
 					</div>
 				);
 			})}
-			<div style={{ height: '50px' }}></div>
-			<div ref={myRef} className="py-3"></div>
+			{loading && (
+				<div
+					className="text-pink-500 text-center py-4"
+					style={{ height: '60px' }}
+					ref={myRef}
+				>
+					Please wait. AI is generating resonse...
+				</div>
+			)}
 		</div>
 	);
 };
