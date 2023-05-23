@@ -1,13 +1,11 @@
 'use client';
 
+import useWindowDimensions from '@/utils/useWindowDimensions';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
 const InputComponent = () => {
-	let windowWidth = 0;
-	if (window !== undefined) {
-		windowWidth = window.innerWidth;
-	}
+	const { width } = useWindowDimensions();
 	const [inputText, setInputText] = useState('');
 
 	const handleSend = () => {
@@ -29,7 +27,7 @@ const InputComponent = () => {
 				className="border-2 border-white rounded-lg p-2 mx-2"
 				placeholder="Send a message..."
 				style={{
-					width: `${windowWidth > 800 ? '40vw' : '80vw'}`,
+					width: `${width > 800 ? '40vw' : '80vw'}`,
 				}}
 				value={inputText}
 				onChange={(e) => setInputText(e.target.value)}

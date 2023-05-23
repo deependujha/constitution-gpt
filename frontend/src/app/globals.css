@@ -13,3 +13,43 @@
 .constitutionText {
 	font-family: 'Architects Daughter', cursive;
 }
+
+@media (min-width: 800px) {
+	.chatBox {
+		margin-left: 25vw;
+		margin-right: 25vw;
+	}
+
+	.chatMsg {
+		maxwidth: 70vw;
+	}
+}
+
+@media (max-width: 799px) {
+	.chatBox {
+		margin-left: 5vw;
+		margin-right: 5vw;
+	}
+
+	.chatMsg {
+		maxwidth: 45vw;
+	}
+}
+
+/* CustomScrollbars.css */
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+::-webkit-scrollbar-track {
+	/* background: pink; */
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
