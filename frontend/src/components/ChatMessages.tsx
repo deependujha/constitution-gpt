@@ -20,9 +20,9 @@ type Props = {
 
 const ChatMessages = ({ messages, myRef }: Props) => {
 	return (
-		<div className="my-5" style={{ maxHeight: '90vh', overflowY: 'scroll' }}>
+		<div className="" style={{ maxHeight: '90vh', overflowY: 'scroll' }}>
 			<div
-				className={`py-4 text-xl underline text-center text-pink-800 ${pangolin.className}`}
+				className={`py-8 text-xl underline text-center text-pink-800 ${pangolin.className}`}
 				style={{ fontSize: '40px' }}
 			>
 				Constitution GPT

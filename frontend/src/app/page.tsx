@@ -36,12 +36,15 @@ const Page = () => {
 	return (
 		<div className="h-screen w-screen bg-center bg-cover bg-[url('/images/bg.jpg')]">
 			<div className="heightScroll">
-				<div className="flex justify-center items-center">
-					{/* <MainLandingComponent /> */}
-				</div>
-				<div>
-					<ChatMessages messages={messages} myRef={myRef} />
-				</div>
+				{messages.length === 0 ? (
+					<div className="flex heightScroll justify-center items-center">
+						<MainLandingComponent />
+					</div>
+				) : (
+					<div>
+						<ChatMessages messages={messages} myRef={myRef} />
+					</div>
+				)}
 			</div>
 
 			<div className="heightInput flex justify-center items-center">
