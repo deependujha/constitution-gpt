@@ -4,13 +4,16 @@ import useWindowDimensions from '@/utils/useWindowDimensions';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
-const InputComponent = () => {
+type Props = {
+	addNewMsg: (msg: string, sender: 'user' | 'bot') => void;
+};
+
+const InputComponent = ({ addNewMsg }: Props) => {
 	const { width } = useWindowDimensions();
 	const [inputText, setInputText] = useState('');
 
 	const handleSend = () => {
-		console.log('clicked on send');
-		console.log(inputText);
+		addNewMsg(inputText, 'user');
 		setInputText('');
 	};
 

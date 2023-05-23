@@ -20,6 +20,7 @@ const ChatBoxComponent = ({ message, sender }: Props) => {
 						width={40}
 						height={40}
 						alt="user"
+						priority={false}
 					/>
 				</div>
 			)}
@@ -36,15 +37,14 @@ const ChatBoxComponent = ({ message, sender }: Props) => {
 				{message}
 			</div>
 			{sender === 'user' && (
-				<div
-					className="mb-3 relative"
-					style={{ width: '40px', height: '40px' }}
-				>
+				<div className="mb-3">
 					<Image
-						src="/images/icons/user.png"
 						className="rounded-full"
-						fill={true}
+						src="/images/icons/user.png"
+						width={40}
+						height={40}
 						alt="user"
+						priority={false}
 					/>
 				</div>
 			)}

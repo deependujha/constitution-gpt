@@ -1,13 +1,15 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 
 function getWindowDimensions() {
-	const { innerWidth: width } = window;
+	const { innerWidth: width } = window || 0;
 	return {
 		width,
 	};
 }
 
-export default function useWindowDimensions() {
+const useWindowDimensions = () => {
 	const [windowDimensions, setWindowDimensions] = useState(
 		getWindowDimensions()
 	);
@@ -22,4 +24,6 @@ export default function useWindowDimensions() {
 	}, []);
 
 	return windowDimensions;
-}
+};
+
+export default useWindowDimensions;
