@@ -1,5 +1,3 @@
-'use client';
-
 import useWindowDimensions from '@/utils/useWindowDimensions';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
@@ -22,6 +20,10 @@ const InputComponent = ({ addNewMsg }: Props) => {
 			handleSend();
 		}
 	};
+
+	if (width === 0) {
+		return <></>;
+	}
 
 	return (
 		<div className="flex">
