@@ -2,6 +2,7 @@
 import React, { useRef } from 'react';
 import ChatBoxComponent from './ChatBoxComponent';
 import { Pangolin } from 'next/font/google';
+import Typewriter from 'typewriter-effect';
 
 const pangolin = Pangolin({
 	subsets: ['latin', 'latin-ext'],
@@ -46,7 +47,20 @@ const ChatMessages = ({ messages, myRef, loading }: Props) => {
 					style={{ height: '60px' }}
 					ref={myRef}
 				>
-					Please wait. AI is generating resonse...
+					<Typewriter
+						onInit={(typewriter) => {
+							typewriter
+								.typeString('Please wait. AI is generating response...')
+								.pauseFor(1500)
+								.deleteAll()
+								.start();
+						}}
+						options={{
+							autoStart: true,
+							loop: true,
+							deleteSpeed: 50,
+						}}
+					/>
 				</div>
 			)}
 		</div>
