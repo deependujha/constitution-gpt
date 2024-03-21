@@ -1,4 +1,4 @@
-# Constitution GPT
+# Constitution GPT 🇮🇳📖
 
 ![intro](./github-readme-assets/intro.png)
 
