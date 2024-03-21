@@ -1,0 +1,14 @@
+services:
+  frontend:
+    depends_on:
+      - backend
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - "3000:3000"
+  
+  backend:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile.prod

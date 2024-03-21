@@ -1,5 +1,5 @@
 'use client';
-
+import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import ChatBoxComponent from '@/components/ChatBoxComponent';
 import ChatMessages from '@/components/ChatMessages';
@@ -26,12 +26,29 @@ const Page = () => {
 			}
 		}, 300);
 		setLoading(true);
-		MakeAPIRequest(msg).then((aiResponse: any) => {
-			// console.log('aiResponse', aiResponse);
-			if (aiResponse === 'An error occurred while making API request') return;
-			setMessages((prev) => [...prev, { message: aiResponse, sender: 'bot' }]);
-			setLoading(false);
-		});
+		axios
+			.post('/api/', {
+				prompt: msg,
+			})
+			.then((aiResponse: any) => {
+				console.log(`aiResponse`, aiResponse.data);
+				// return;
+				aiResponse = aiResponse.data.answer;
+				setMessages((prev) => [
+					...prev,
+					{ message: aiResponse, sender: 'bot' },
+				]);
+				setLoading(false);
+			})
+			.catch((err: Error) => {
+				console.log('err', err);
+				setMessages((prev) => [
+					...prev,
+					{ message: 'An error occurred 🥲', sender: 'bot' },
+				]);
+				setLoading(false);
+				alert(err.message || 'An error occurred while making API request');
+			});
 	};
 
 	return (

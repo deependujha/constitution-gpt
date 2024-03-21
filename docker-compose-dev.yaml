@@ -1,0 +1,18 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/code
+  
+  backend:
+    build:
+      context: ./backend
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "8000:80" # exposing backend port to check for routes independently
+    volumes:
+      - ./backend:/code
